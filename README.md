@@ -1,4 +1,5 @@
-# Cryptography-Algorithm
+Important terms like Symmetric Key, Asymmetric Key Cryptography, Digital Envelope, Digital Signature and Public Key certicate has been discussed at end with diagrams.
+
 I have used various **Cryptographic algorithms to make communication between client and server as secure as possible**, 
 Here everything is done step by step and first I have talked about Symmetric Key encryption Techniques, Then moves to Public (Asymmetric) Encryption and then we understand the advantages & Disadvantages of Both and then combined both & used the concept of Signature to provide maximum security.
 Some of the codes uses library (as we must have knowledge about them), but after that I have also implemented the same thing from scratch i.e a dummy hash function, Euclid algorithm for generating key in RSA.
@@ -33,15 +34,15 @@ Recommended to explore in order to get familiar with idea & Content.
   5. Using the help of library implemented concept of **Digital signature** and used inbuilt functions for that.
   6. Have implemented everything from scratch and line by line generated signature from hashing of the content of every msg. Also not used inbuilt hash function, instead **make our own sample hash** for this lab.
 
-Symmetric Cryptography(same key): ![image](https://github.com/himansh19/Cryptography-Algorithm/assets/89848299/9336849c-9095-4845-b526-49a91e8e1048)
+**Symmetric Cryptography(same key):** ![image](https://github.com/himansh19/Cryptography-Algorithm/assets/89848299/9336849c-9095-4845-b526-49a91e8e1048)
 
-Asymmetric Cryptography (Different Key): ![image](https://github.com/himansh19/Cryptography-Algorithm/assets/89848299/f21affb5-b400-4dfc-a8eb-a310fbcd75c4)
+**Asymmetric Cryptography (Different Key):** ![image](https://github.com/himansh19/Cryptography-Algorithm/assets/89848299/f21affb5-b400-4dfc-a8eb-a310fbcd75c4)
 
-Digital Envelope (Encrypt Symmetric Key with Asymmetric Key and combine with data encrypted with symmetric key): ![image](https://github.com/himansh19/Cryptography-Algorithm/assets/89848299/7f13f4c3-f0d1-4d1b-9996-4912a52a75a0)
+**Digital Envelope (Encrypt Symmetric Key with Asymmetric Key and combine with data encrypted with symmetric key):** ![image](https://github.com/himansh19/Cryptography-Algorithm/assets/89848299/7f13f4c3-f0d1-4d1b-9996-4912a52a75a0)
 
-Digital Signature (Encrypt message hash with Asymmetric Encryption): ![image](https://github.com/himansh19/Cryptography-Algorithm/assets/89848299/cd6fa52e-9e20-4567-972e-867e1ba0338e)
+**Digital Signature (Encrypt message hash with Asymmetric Encryption):** ![image](https://github.com/himansh19/Cryptography-Algorithm/assets/89848299/cd6fa52e-9e20-4567-972e-867e1ba0338e)
 
-Public Key Certificate (Special message with Special signature) i.e msg containing public key & information + Hash of this msg encrypted with CA(certifying authority) public key: ![image](https://github.com/himansh19/Cryptography-Algorithm/assets/89848299/4983dd7b-44d9-405a-b554-49051e67e3af)
+**Public Key Certificate (Special message with Special signature)** i.e msg containing public key & information + Hash of this msg encrypted with CA(certifying authority) public key: ![image](https://github.com/himansh19/Cryptography-Algorithm/assets/89848299/4983dd7b-44d9-405a-b554-49051e67e3af)
 
 Optional RSA Key Generation Algorithm Example: ![image](https://github.com/himansh19/Cryptography-Algorithm/assets/89848299/4f498557-8c49-4308-b50b-a94c02fda30c)
 

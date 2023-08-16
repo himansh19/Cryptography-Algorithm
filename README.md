@@ -31,8 +31,10 @@ Recommended to explore in order to get familiar with idea & Content.
      Now problem of Key exchange that how will know each other public key also solved using application & concept of signature but instead of sender or receiver, Some third party which is known as **Certifying Authority** put signature(Hash of content of certificate encrypt with priv key of CA) on the certificate. Certificate content include information of public key and is known as public key certificate along with signature of CA.
 
   Here we have used Signature concept to provide CIA i.e every msg is send with it's hash taking use of both type of cryptography. In the same contrast key exchange can be implemented which is lot easier than that as only CA has to generate a certificate and put it's signature on that but we have not implemented here as become complex for you.
+  
   5. Using the help of library implemented concept of **Digital signature** and used inbuilt functions for that.
-  6. Have implemented everything from scratch and line by line generated signature from hashing of the content of every msg. Also not used inbuilt hash function, instead **make our own sample hash** for this lab.
+     
+  6. Have implemented everything from scratch and line by line generated signature from hashing of the content of every msg. Also not used inbuilt hash function, instead **make our own sample hash** for this lab. Here used concept of Digital envelope as well as digital signature.
 
 **Symmetric Cryptography(same key):** ![image](https://github.com/himansh19/Cryptography-Algorithm/assets/89848299/9336849c-9095-4845-b526-49a91e8e1048)
 

@@ -2,7 +2,7 @@ import socket
 import rsa
 
 # IP = socket.gethostbyname(socket.gethostname())
-IP='192.168.43.64'
+IP='192.168.1.5'
 PORT = 8085
 ADDR = (IP, PORT)
 SIZE = 1024

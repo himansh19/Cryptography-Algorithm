@@ -7,7 +7,7 @@ s = socket.socket()
 # Define the port on which you want to connect
 port = 8082
 # connect to the server on local computer
-s.connect(('192.168.1.6', port))
+s.connect(('192.168.1.5', port))
 
 
 # -----------------------------------------------------------------------------------------------------------------------

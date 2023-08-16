@@ -9,7 +9,7 @@ s = socket.socket()
 port = 1234
 
 # connect to the server on local computer
-s.connect(('192.168.43.64', port))
+s.connect(('192.168.1.5', port))
 
 def egcd(e,r):            # to find e gcd check
     while(r!=0):

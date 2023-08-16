@@ -1,12 +1,11 @@
 import socket
-from _thread import *
 
 IP = socket.gethostbyname(socket.gethostname())
 PORT = 8084
 ADDR = (IP, PORT)
 DISCONNECT_MSG = "!DISCONNECT"
-
-pub_keyclient=(997,323);pvt_keyserver=(733,899);pub_keyserver=(997,899)
+pub_keyclient=(997,323);pvt_keyclient=(13,323);pub_keyserver=(997,899)
+symmetrickey=4729   # client know sym key and will send to server server get diff sym key from diff client
 
 def hash(stri):   # 6 bit hash
     inc=2;m=1
@@ -72,51 +71,39 @@ def Sym_decrypt(skey,text):
 
 def signature(client_privkey,msg):
     msg_hash=hash(msg)
-    return Asym_encrypt(pvt_keyserver,str(msg_hash))  # bcz hash int value 
+    return Asym_encrypt(pvt_keyclient,str(msg_hash))  # bcz hash int value 
 
-# symmetric key send by client 
-def handle_client(conn, addr): 
-    print(f"[NEW CONNECTION] {addr} connected.")
-    
-    connected = True
-    encrypted_symmetric_key=conn.recv(1024).decode()    # skey send by each client diff decrypt that
-    
-    symmetric_key=int(Asym_decrypt(pvt_keyserver,encrypted_symmetric_key))
-    
+def main():
+    client = socket.socket()
+    client.connect(ADDR)
+    print(f"[CONNECTED] Client connected to server at {IP}:{PORT}")
+    # sending new symmetric key to server 
+    keysend=Asym_encrypt(pub_keyserver,str(symmetrickey))
+    client.send(keysend.encode())
+    connected=True
     while connected:
-        msg=conn.recv(1024).decode()
-        received_digital_sign=conn.recv(1024).decode()   # verify received hash 
+        msg = input(">>>")
+        digital_sign=signature(pvt_keyclient,msg)   # sign the msg i.e hash & encrypt with priv key
+        encrypted_msg=Sym_encrypt(symmetrickey,msg)  # encrypt msg using sym key
+        print('Digital Sign: ',digital_sign)  
 
-        decrypted_msg=Sym_decrypt(symmetric_key,msg)
-        print("Recieved: ",decrypted_msg);print('Received Sign: ',received_digital_sign)
+        client.send(encrypted_msg.encode())
+        client.send(digital_sign.encode())
 
-        msg_hash=hash(decrypted_msg)
-        received_hash=Asym_decrypt(pub_keyclient,received_digital_sign)
+        msg=client.recv(1024).decode()
+        received_digital_sign=client.recv(1024).decode()    # verify the received sign by computing msg hash
 
-        if msg_hash==int(received_hash):
+        decrypted_msg=Sym_decrypt(symmetrickey,msg)
+        print("Recieved msg: ",decrypted_msg);print('Received Sign: ',received_digital_sign)
+
+        msg_hash=hash(decrypted_msg)  
+        received_hash=Asym_decrypt(pub_keyserver,received_digital_sign)
+
+        if msg_hash==int(received_hash):    # received hash is string
             print ("Authentictiy verified, Valid Signature")
         else:
             print ("The signature is not valid.!!!!!") 
-        
-        # server will send msg
-        msg = input(">")
-        digital_sign=signature(pvt_keyserver,msg)
-        encrypted_msg=Sym_encrypt(symmetric_key,msg)
-        print('Digital Sign: ',digital_sign)
-
-        conn.send(encrypted_msg.encode())
-        conn.send(digital_sign.encode()) 
-    conn.close()
-
-def main():
-    Threadcnt=0
-    print("[STARTING] Server is starting...")
-    server = socket.socket()
-    server.bind(ADDR)
-    server.listen()
-    print(f"[LISTENING] Server is listening on {IP}:{PORT}")
-    while True:
-        conn,addr = server.accept()
-        start_new_thread(handle_client, (conn, addr,))   # to make it tuppleh
-        print('ThreadCount: ',Threadcnt+1)
+        if msg=="DISCONNECT":
+            connected=False
+            client.close()
 main()

@@ -22,11 +22,12 @@ Recommended to explore in order to get familiar with idea & Content.
 
      Solution to this problem is the use of Signatures (use concept of Hash behind) How ? 
      As Asymmetric encryption is computionally expensive, so we will only encrypt Hash of the msg (which is fixed size) using Asymmetric encryption (by priv key) [it is called signature] and rest of the message is send using Symmetric encryption by use of Symmetric Key.
-     How they know symmetric Key? -> By use of **Digital Envelope** i.e encrypt symmetric also with assymetric encryption for session. 
+     How they know symmetric Key? -> By use of **Digital Envelope** i.e encrypt symmetric key also with assymetric encryption for session. 
 
-     Now CIA Secured: **Confidentialty** -> Data cannot be read as used symmetric cryptogrpahy & symmetric key will change after every session and will be send after connection establishment.
-               **Integrity** -> msg cannot be altered in way, if changed then hash of msg also change, so will know.
-               **Authentication** -> as apply public key of sender on hash to decrypt hash, so will ensured that whosoever encrypt this hash has sender priv key and priv key is known only to sender so authenticated.
+     Now CIA Secured:
+     **Confidentialty** -> Data cannot be read as used symmetric cryptogrpahy & symmetric key will change after every session and will be send after connection establishment.
+     **Integrity** -> msg cannot be altered in way, if changed then hash of msg also change, so will know.
+     **Authentication** -> as apply public key of sender on hash to decrypt hash, so will ensured that whosoever encrypt this hash has sender priv key and priv key is known only to sender so authenticated.
 
      Now problem of Key exchange that how will know each other public key also solved using application & concept of signature but instead of sender or receiver, Some third party which is known as **Certifying Authority** put signature(Hash of content of certificate encrypt with priv key of CA) on the certificate. Certificate content include information of public key and is known as public key certificate along with signature of CA.
 

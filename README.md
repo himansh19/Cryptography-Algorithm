@@ -1,6 +1,7 @@
 Important terms like Symmetric Key, Asymmetric Key Cryptography, Digital Envelope, Digital Signature and Public Key certicate has been discussed at end with diagrams.
 
-I have used various ### **Cryptographic algorithms to make communication between client and server as secure as possible** 
+I have used various 
+### **Cryptographic algorithms to make communication between client and server as secure as possible** 
 Here everything is done step by step and first I have talked about Symmetric Key encryption Techniques, Then moves to Public (Asymmetric) Encryption and then we understand the advantages & Disadvantages of Both and then combined both & used the concept of Signature to provide maximum security.
 Some of the codes uses library (as we must have knowledge about them), but after that I have also implemented the same thing from scratch i.e a dummy hash function, Euclid algorithm for generating key in RSA.
 Recommended to explore in order to get familiar with idea & Content.
